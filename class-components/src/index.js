@@ -17,6 +17,21 @@ class Avatar extends React.Component {
   }
 }
 
+class UserInfo extends React.Component {
+  constructor(props) {
+    super(props);
+    this.user = props.user;
+  }
+  render() {
+    return (
+      <div className="UserInfo">
+        <Avatar user={this.user} />
+        <div className="UserInfo-name">{this.user.name}</div>
+      </div>
+    );
+  }
+}
+
 class Comment extends React.Component {
   constructor(props) {
     super(props);
@@ -24,10 +39,7 @@ class Comment extends React.Component {
   render() {
     return (
       <div className="Comment">
-        <div className="UserInfo">
-          <Avatar user={this.props.author} />
-          <div className="UserInfo-name">{this.props.author.name}</div>
-        </div>
+        <UserInfo user={this.props.author} />
         <div className="Comment-text">{this.props.text}</div>
         <div className="Comment-date">{formatDate(this.props.date)}</div>
       </div>
